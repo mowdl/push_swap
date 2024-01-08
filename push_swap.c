@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:59:00 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/08 21:58:52 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/09 00:19:39 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,13 @@ t_vec2	best_rotation_scenario(t_stack *a, t_stack *b, int ia, int ib)
 	ops[1] = max(a->size - ia, b->size - ib);
 	ops[2] = ia + (b->size - ib);
 	ops[3] = ib + (a->size - ia);
-	s = 0;
-	i = 1;
-	while (i < 4)
+	s = 3;
+	i = 2;
+	while (i >= 0)
 	{
 		if (ops[i] < ops[s])
 			s = i;
-		i++;
+		i--;
 	}
 	r.x = s;
 	r.y = ops[s];
@@ -113,46 +113,36 @@ t_move	i_of_cheapest_to_move(t_stack *a, t_stack *b)
 	int	n_of_moves;
 	t_move move;
 
-	a->size = ft_lstsize(a->head);
-	b->size = ft_lstsize(b->head);
-	move.n_of_moves = 2147483647;
+	move.n_of_moves = -1;
 	i = 0;
 	while (i < a->size)
 	{
 		i_of_smaller = get_i_of_biggest_smaller_than(b, get_v_at_i(a, i));
 		n_of_moves = best_rotation_scenario(a, b, i,  i_of_smaller).y + 1;
-		if (n_of_moves < move.n_of_moves)
+		if (n_of_moves < move.n_of_moves || move.n_of_moves == -1)
 		{
 			move.from = i;
 			move.to = i_of_smaller;
 			move.rot = best_rotation_scenario(a, b, i,  i_of_smaller).x;
 			move.n_of_moves = n_of_moves;
 		}
+		i++;
 	}
 	return (move);
 }
 
-void	exe_move(t_move move)
+void	sort_in_b(t_stack *a, t_stack *b)
 {
+	t_move	move;
 
-	if (move.rot == 0)
+	a->size = ft_lstsize(a->head);
+	b->size = ft_lstsize(b->head);
+	while (a->size)
 	{
-		while (move.from > 0 && move.to > 0)
-		{
-			rr();
-			move.from--;
-			move.to--;
-		}
-		while (move.from)
-		{
-			ra();
-			move.from--;
-		}
-		while (move.to)
-		{
-			rb();
-			move.to--;
-		}
+		move = i_of_cheapest_to_move(a, b);
+		print_stack(a);
+		print_stack(b);
+		exe_move(move);
 	}
 }
 
@@ -165,6 +155,9 @@ int	main(int argc, char **argv)
 	b = get_b();
 	pb();
 	pb();
+	print_stack(a);
+	print_stack(b);
+	sort_in_b(a, b);
 	print_stack(a);
 	print_stack(b);
 }

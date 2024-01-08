@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:57:48 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/08 01:19:52 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/08 23:31:16 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ void	stack_rrotate(t_stack *s);
 void	rrb();
 void	rra();
 void	rrr();
+
+void	exe_move(t_move move);
 
 #endif // !PUSH_SWAP_H

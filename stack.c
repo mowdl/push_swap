@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:35:58 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/07 22:05:11 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/09 00:22:02 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	print_stack(t_stack *a)
 			break;
 		tmp = tmp->next;
 	}
-	if (tmp == a->tail)
-		ft_printf("%s: tail is correct\n", a->name);
-	else
-		ft_printf("%s: error in tail\n", a->name);
+	ft_printf("  size: %i\n", a->size);
 }
 
 void	check_unique(t_stack *s, int v)

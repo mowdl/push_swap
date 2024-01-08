@@ -6,7 +6,7 @@
 #    By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:52:03 by mel-meka          #+#    #+#              #
-#    Updated: 2024/01/04 19:22:33 by mel-meka         ###   ########.fr        #
+#    Updated: 2024/01/08 22:18:24 by mel-meka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ PS_SRCS = push_swap.c			\
 		  stack_swap.c			\
 		  stack_push.c			\
 		  stack_rotate.c		\
-		  stack_rrotate.c
+		  stack_rrotate.c		\
+		  exe_move.c
 
 FT_PRINTF_OBJS = $(FT_PRINTF_SRCS:.c=.o)
 GNL_OBJS = $(GNL_SRCS:.c=.o)
