@@ -6,11 +6,25 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:44:43 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/05 00:33:46 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/06 23:24:48 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static char	**free_arr(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
 
 int	stack_atoi(const char *str)
 {
@@ -42,17 +56,35 @@ int	stack_atoi(const char *str)
 	return (r);
 }
 
+void	load_with_split(t_stack *a, char *arg)
+{
+	int		i;
+	char	**args;
+
+	i = 0;
+	args = ft_split(arg, ' ');
+	if (args == NULL)
+		clean_exit(1);
+	while (args[i])
+	{
+		stack_add_back(a, stack_atoi(args[i]));
+		i++;
+	}
+	free_arr(args);
+}
+
 t_stack	*load_a(int argc, char **argv)
 {
 	t_stack	*a;
 	int		i;
-	char	**args;
 
 	a = get_a();
 	if (argc < 2)
+		clean_exit(1);
+	if (argc == 2)
 	{
-		ft_printf("Error\n");
-		exit(1);
+		load_with_split(a, argv[1]);
+		return (a);
 	}
 	i = 1;
 	while (i < argc)

@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:35:58 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/04 18:55:20 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/07 22:05:11 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,25 @@ void	print_stack(t_stack *a)
 		ft_printf("%s: error in tail\n", a->name);
 }
 
+void	check_unique(t_stack *s, int v)
+{
+	t_list	*tmp;
+
+	tmp = s->head;
+	while (tmp)
+	{
+		if (*(int*)tmp->content == v)
+			clean_exit(1);
+		tmp = tmp->next;
+	}
+}
+
 void	stack_add_back(t_stack *a, int i)
 {
 	int		*v;
 	t_list	*node;
-
+	
+	check_unique(a, i);
 	v = malloc(sizeof(int));
 	if (v == NULL)
 		clean_exit(1);
@@ -56,5 +70,3 @@ void	stack_add_back(t_stack *a, int i)
 	a->tail->next = node;
 	a->tail = node;
 }
-
-

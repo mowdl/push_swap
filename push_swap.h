@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:57:48 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/04 19:21:30 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/08 01:19:52 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,23 @@
 typedef struct s_stack{
 	t_list	*head;
 	t_list	*tail;
+	int		size;
 	char	*name;
 }			t_stack;
+
+typedef struct s_vec2
+{
+	int	x;
+	int	y;
+}		t_vec2;
+
+typedef struct s_move
+{
+	int	from;
+	int	to;
+	int	rot;
+	int	n_of_moves;
+}		t_move;
 
 void	clean_exit(const int i);
 t_stack	*get_b(void);
