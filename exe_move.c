@@ -39,18 +39,18 @@ void	rrr_rra_rrb(t_move move)
 
 	a_size = get_a()->size;
 	b_size = get_b()->size;
-	while (move.from != a_size && move.to != b_size)
+	while (move.from % a_size != 0 && move.to % b_size != 0)
 	{
 		rrr();
 		move.from++;
 		move.to++;
 	}
-	while (move.from < a_size)
+	while (move.from % a_size != 0)
 	{
 		rra();
 		move.from++;
 	}
-	while (move.to < b_size)
+	while (move.to % b_size != 0)
 	{
 		rrb();
 		move.to++;
@@ -64,7 +64,7 @@ void	ra_rrb(t_move move)
 		ra();
 		move.from--;
 	}
-	while (move.to != get_b()->size)
+	while (move.to % get_b()->size != 0)
 	{
 		rrb();
 		move.to++;
@@ -78,7 +78,7 @@ void	rra_rb(t_move move)
 		rb();
 		move.to--;
 	}
-	while (move.from != get_a()->size)
+	while (move.from % get_a()->size != 0)
 	{
 		rra();
 		move.from++;
