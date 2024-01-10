@@ -146,6 +146,34 @@ void	sort_in_b(t_stack *a, t_stack *b)
 	}
 }
 
+void	biggest_to_top(t_stack *b)
+{
+	int	i_max;
+	int v_max;
+	int	i;
+	t_list	*tmp;
+
+	tmp = b->head->next;
+	i = 0;
+	i_max = 0;
+	v_max = *(int*)b->head->content;
+	while (tmp)
+	{
+		i++;
+		if (v_max < *(int *)tmp->content)
+		{
+			i_max = i;
+			v_max = *(int *)tmp->content;
+		}
+		tmp = tmp->next;
+	}
+	while (i_max != 0)
+	{
+		rb();
+		i_max--;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -159,5 +187,7 @@ int	main(int argc, char **argv)
 	print_stack(b);
 	sort_in_b(a, b);
 	print_stack(a);
+	print_stack(b);
+	biggest_to_top(b);
 	print_stack(b);
 }
