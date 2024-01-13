@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:59:00 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/09 00:19:39 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:32:16 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,6 @@ void	sort_in_b(t_stack *a, t_stack *b)
 	while (a->size)
 	{
 		move = i_of_cheapest_to_move(a, b);
-		print_stack(a);
-		print_stack(b);
 		exe_move(move);
 	}
 }
@@ -174,6 +172,25 @@ void	biggest_to_top(t_stack *b)
 	}
 }
 
+void	push_b_to_a(t_stack *b)
+{
+	int		i;
+	t_list	*tmp;
+
+	tmp = b->head;
+	i = 0;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	while (i)
+	{
+		pa();
+		i--;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -183,11 +200,8 @@ int	main(int argc, char **argv)
 	b = get_b();
 	pb();
 	pb();
-	print_stack(a);
-	print_stack(b);
 	sort_in_b(a, b);
-	print_stack(a);
-	print_stack(b);
 	biggest_to_top(b);
-	print_stack(b);
+	push_b_to_a(b);
+	print_stack(a);
 }

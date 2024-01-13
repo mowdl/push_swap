@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 22:04:51 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/09 00:19:08 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:23:19 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	rra_rb(t_move move)
 
 void	exe_move(t_move move)
 {
-	ft_printf("---Iteration: rot: %i from: %i to: %i n: %i\n", move.rot, move.from, move.to, move.n_of_moves);
 	if (move.rot == 0)
 		rr_ra_rb(move);
 	else if (move.rot == 1)
