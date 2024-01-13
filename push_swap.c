@@ -48,11 +48,16 @@ int	get_i_of_biggest_smaller_than(t_stack *b, int v)
 			if (*(int*)prev->content > v)
 				return (i);
 		}
+		if (*(int *)prev->content < *(int *)tmp->content)
+		{
+			if (v < *(int*)prev->content)
+				return (i);
+		}
 		prev = tmp;
 		tmp = tmp->next;
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int	get_v_at_i(t_stack *s, int i)
@@ -111,13 +116,15 @@ t_move	i_of_cheapest_to_move(t_stack *a, t_stack *b)
 	int	i_of_smaller;
 	int	i;
 	int	n_of_moves;
+	int	v;
 	t_move move;
 
 	move.n_of_moves = -1;
 	i = 0;
 	while (i < a->size)
 	{
-		i_of_smaller = get_i_of_biggest_smaller_than(b, get_v_at_i(a, i));
+		v = get_v_at_i(a, i);
+		i_of_smaller = get_i_of_biggest_smaller_than(b, v);
 		n_of_moves = best_rotation_scenario(a, b, i,  i_of_smaller).y + 1;
 		if (n_of_moves < move.n_of_moves || move.n_of_moves == -1)
 		{
