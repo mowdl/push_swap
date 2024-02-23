@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:59:00 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/11 21:32:16 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/23 07:10:28 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,31 +151,40 @@ void	sort_in_b(t_stack *a, t_stack *b)
 	}
 }
 
-void	biggest_to_top(t_stack *b)
+void	smallest_to_top(t_stack *a)
 {
-	int	i_max;
-	int v_max;
+	int	i_min;
+	int v_min;
 	int	i;
 	t_list	*tmp;
 
-	tmp = b->head->next;
+	tmp = a->head->next;
 	i = 0;
-	i_max = 0;
-	v_max = *(int*)b->head->content;
+	i_min = 0;
+	v_min = *(int*)a->head->content;
 	while (tmp)
 	{
 		i++;
-		if (v_max < *(int *)tmp->content)
+		if (v_min > *(int *)tmp->content)
 		{
-			i_max = i;
-			v_max = *(int *)tmp->content;
+			i_min = i;
+			v_min = *(int *)tmp->content;
 		}
 		tmp = tmp->next;
 	}
-	while (i_max != 0)
+	a->size = ft_lstsize(a->head);
+	while (i_min != 0 && i_min != a->size)
 	{
-		rb();
-		i_max--;
+		if (i_min <= a->size / 2)
+		{
+			ra();
+			i_min--;
+		}
+		else 
+		{
+			rra();
+			i_min++;
+		}
 	}
 }
 
@@ -198,6 +207,125 @@ void	push_b_to_a(t_stack *b)
 	}
 }
 
+void	sort_big_stack(t_stack *a, t_stack *b)
+{
+	pb();
+	pb();
+	sort_in_b(a, b);
+	push_b_to_a(b);
+	smallest_to_top(a);
+}
+
+int	is_stack_sorted(t_stack *a)
+{
+	t_list	*tmp;
+
+	tmp = a->head;
+	while (tmp->next)
+	{
+		if (*(int*)tmp->content > *(int*)tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+
+void	sort_3_stack(t_stack *a)
+{
+	int	a1;
+	int	a2;
+	int	a3;
+
+	if (is_stack_sorted(a))
+		return ;
+	a1 = *(int *)a->head->content;
+	a2 = *(int *)a->head->next->content;
+	a3 = *(int *)a->tail->content;
+	if (a1 > a2 && a1 < a3 && a2 < a3)
+		sa();
+	else if (a1 < a2 && a1 > a3 && a2 > a3)
+		rra();
+	else if (a1 > a2 && a1 > a3 && a2 < a3)
+		ra();
+	else if (a1 > a2 && a1 > a3 && a2 > a3)
+	{
+		ra();
+		sa();
+	}
+	else
+	{
+		rra();
+		sa();
+	}
+}
+
+void	sort_4_stack(t_stack *a)
+{
+	int	bv;
+
+	pb();
+	bv = *(int *)get_b()->head->content;
+	sort_3_stack(a);
+	if(bv < *(int *)a->head->content)
+		pa();
+	else if (bv < *(int *)a->head->next->content)
+	{
+		ra();
+		pa();
+		rra();
+	}
+	else if (bv < *(int *)a->head->next->next->content)
+	{
+		rra();
+		pa();
+		ra();
+		ra();
+	}
+	else
+	{
+		pa();
+		ra();
+	}
+}
+
+void	sort_5_stack(t_stack *a)
+{
+	int	bv;
+
+	pb();
+	sort_4_stack(a);
+	bv = *(int *)get_b()->head->content;
+	if(bv < *(int *)a->head->content)
+		pa();
+	else if (bv < *(int *)a->head->next->content)
+	{
+		ra();
+		pa();
+		rra();
+	}
+	else if (bv < *(int *)a->head->next->next->content)
+	{
+		ra();
+		ra();
+		pa();
+		rra();
+		rra();
+	}
+	else if (bv < *(int *)a->head->next->next->next->content)
+	{
+		rra();
+		pa();
+		ra();
+		ra();
+	}
+	else
+	{
+		pa();
+		ra();
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -205,10 +333,18 @@ int	main(int argc, char **argv)
 
 	a = load_a(argc, argv);
 	b = get_b();
-	pb();
-	pb();
-	sort_in_b(a, b);
-	biggest_to_top(b);
-	push_b_to_a(b);
-	print_stack(a);
+	a->size = ft_lstsize(a->head);
+	if (is_stack_sorted(a))
+		clean_exit(0);
+	else if (a->size == 2)
+		ra();
+	else if (a->size == 3)
+		sort_3_stack(a);
+	else if (a->size == 4)
+		sort_4_stack(a);
+	else if (a->size == 5)
+		sort_5_stack(a);
+	else
+		sort_big_stack(a, b);
+	clean_exit(0);
 }
