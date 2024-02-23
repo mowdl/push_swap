@@ -6,7 +6,7 @@
 #    By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:52:03 by mel-meka          #+#    #+#              #
-#    Updated: 2024/01/08 22:18:24 by mel-meka         ###   ########.fr        #
+#    Updated: 2024/02/23 22:40:52 by mel-meka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ INCLUDES = -I libft -I minilibX_macos -I get_next_line -I ft_printf
 
 NAME = push_swap
 
-CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -O3
 
 all: $(NAME)
 
