@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:35:58 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/09 00:22:02 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:16:22 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	print_stack(t_stack *a)
 {
 	t_list	*tmp;
-	
+
 	tmp = a->head;
 	if (tmp == NULL)
 		ft_printf("%s: stack is empty\n", a->name);
 	while (tmp)
 	{
-		ft_printf("%i    ", *(int*)tmp->content);
+		ft_printf("%i    ", *(int *)tmp->content);
 		if (tmp->next == NULL)
-			break;
+			break ;
 		tmp = tmp->next;
 	}
 	ft_printf("  size: %i\n", a->size);
@@ -36,7 +36,7 @@ void	check_unique(t_stack *s, int v)
 	tmp = s->head;
 	while (tmp)
 	{
-		if (*(int*)tmp->content == v)
+		if (*(int *)tmp->content == v)
 			clean_exit(1);
 		tmp = tmp->next;
 	}
@@ -46,7 +46,7 @@ void	stack_add_back(t_stack *a, int i)
 {
 	int		*v;
 	t_list	*node;
-	
+
 	check_unique(a, i);
 	v = malloc(sizeof(int));
 	if (v == NULL)

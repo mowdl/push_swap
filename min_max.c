@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push.c                                       :+:      :+:    :+:   */
+/*   min_max.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 18:43:05 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/24 00:18:16 by mel-meka         ###   ########.fr       */
+/*   Created: 2024/02/23 23:55:32 by mel-meka          #+#    #+#             */
+/*   Updated: 2024/02/24 00:13:23 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	push(t_stack *a, t_stack *b)
+int	max(int a, int b)
 {
-	t_list	*tmp;
-
-	if (b->head == NULL)
-		return ;
-	tmp = b->head;
-	b->head = b->head->next;
-	if (b->head == NULL)
-		b->tail = NULL;
-	ft_lstadd_front(&a->head, tmp);
-	if (a->tail == NULL)
-		a->tail = a->head;
+	if (a > b)
+		return (a);
+	return (b);
 }
 
-void	pa(void)
+int	min(int a, int b)
 {
-	push(get_a(), get_b());
-	ft_printf("pa\n");
-}
-
-void	pb(void)
-{
-	push(get_b(), get_a());
-	ft_printf("pb\n");
+	if (a < b)
+		return (a);
+	return (b);
 }

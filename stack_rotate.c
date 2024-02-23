@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:58:29 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/04 19:11:09 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:19:14 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	stack_rotate(t_stack *s)
 	tmp->next = NULL;
 }
 
-void	ra()
+void	ra(void)
 {
 	stack_rotate(get_a());
 	ft_printf("ra\n");
 }
 
-void	rb()
+void	rb(void)
 {
 	stack_rotate(get_b());
 	ft_printf("rb\n");
 }
 
-void	rr()
+void	rr(void)
 {
 	stack_rotate(get_a());
 	stack_rotate(get_b());

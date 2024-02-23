@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:08:56 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/04 18:46:47 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:20:06 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_stack *s)
 	t_list	*third;
 
 	if (s->head == NULL || s->head->next == NULL)
-		return;
+		return ;
 	tmp = s->head;
 	third = s->head->next->next;
 	s->head = s->head->next;
@@ -46,4 +46,3 @@ void	ss(void)
 	swap(get_a());
 	ft_printf("ss\n");
 }
-

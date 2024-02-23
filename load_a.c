@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:44:43 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/06 23:24:48 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:11:19 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static char	**free_arr(char **arr)
 	return (NULL);
 }
 
+void	stack_atoi_loop(const char **str, int *digits, long *r)
+{
+	while (**str && ft_isdigit(**str))
+	{
+		(*digits)++;
+		if (*digits > 10)
+			break ;
+		*r = *r * 10 + (**str - '0');
+		(*str)++;
+	}
+}
+
 int	stack_atoi(const char *str)
 {
 	long	r;
@@ -41,14 +53,7 @@ int	stack_atoi(const char *str)
 	}
 	digits = 0;
 	r = 0;
-	while (*str && ft_isdigit(*str))
-	{
-		digits++;
-		if (digits > 10)
-			break;
-		r = r * 10 + (*str - '0');
-		str++;
-	}
+	stack_atoi_loop(&str, &digits, &r);
 	r = r * s;
 	if ((*str != '\0' && !ft_isdigit(*str))
 		|| digits > 10 || r > (long)2147483647 || r < (long)-2147483648)

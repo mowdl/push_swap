@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:57:48 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/01/08 23:31:16 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:03:57 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,18 @@ void	rra();
 void	rrr();
 
 void	exe_move(t_move move);
+
+int	is_stack_sorted(t_stack *a);
+
+void	sort_3_stack(t_stack *a);
+void	sort_4_stack(t_stack *a);
+void	sort_5_stack(t_stack *a);
+
+int	max(int a, int b);
+int	min(int a, int b);
+
+t_move	i_of_cheapest_to_move(t_stack *a, t_stack *b);
+
+void	sort_big_stack(t_stack *a, t_stack *b);
 
 #endif // !PUSH_SWAP_H
