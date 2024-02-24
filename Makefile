@@ -6,7 +6,7 @@
 #    By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:52:03 by mel-meka          #+#    #+#              #
-#    Updated: 2024/02/23 22:40:52 by mel-meka         ###   ########.fr        #
+#    Updated: 2024/02/24 23:27:53 by mel-meka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,12 +64,26 @@ PS_SRCS = push_swap.c			\
 		  stack_push.c			\
 		  stack_rotate.c		\
 		  stack_rrotate.c		\
-		  exe_move.c
+		  exe_move.c			\
+		  sort_medium.c			\
+		  min_max.c				\
+		  cheapest_to_move.c	\
+		  sort_big_stack.c
 
+BONUS_SRSC = checker_bonus/checker_bonus.c			\
+			 checker_bonus/load_a_bonus.c			\
+			 checker_bonus/clean_exit_bonus.c		\
+			 checker_bonus/stack_bonus.c			\
+			 checker_bonus/stack_swap_bonus.c		\
+			 checker_bonus/stack_push_bonus.c		\
+			 checker_bonus/stack_rotate_bonus.c		\
+			 checker_bonus/stack_rrotate_bonus.c	\
+	
 FT_PRINTF_OBJS = $(FT_PRINTF_SRCS:.c=.o)
 GNL_OBJS = $(GNL_SRCS:.c=.o)
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 PS_OBJS = $(PS_SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRSC:.c=.o)
 SRCS = $(GNL_SRCS) $(LIBFT_SRCS) $(FT_PRINTF_SRCS)
 OBJS = $(SRCS:.c=.o)
 
@@ -77,18 +91,25 @@ INCLUDES = -I libft -I minilibX_macos -I get_next_line -I ft_printf
 
 
 NAME = push_swap
+BONUS = checker
 
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -O3
 
 all: $(NAME)
 
 $(NAME): $(LIBFT_OBJS) $(FT_PRINTF_OBJS) $(PS_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ 
+	$(CC) $(CFLAGS) $^ -o $@
+
+bonus: $(BONUS)
+
+$(BONUS): $(LIBFT_OBJS) $(FT_PRINTF_OBJS) $(GNL_OBJS) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $^ -o $(BONUS)
 
 clean:
-	$(RM) $(OBJS) $(PS_OBJS)
+	$(RM) $(OBJS) $(PS_OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(BONUS)
 
 re: fclean all
