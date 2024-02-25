@@ -6,7 +6,7 @@
 #    By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:52:03 by mel-meka          #+#    #+#              #
-#    Updated: 2024/02/24 23:27:53 by mel-meka         ###   ########.fr        #
+#    Updated: 2024/02/25 02:27:15 by mel-meka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ PS_SRCS = push_swap.c			\
 
 BONUS_SRSC = checker_bonus/checker_bonus.c			\
 			 checker_bonus/load_a_bonus.c			\
+			 checker_bonus/load_ops_bonus.c			\
 			 checker_bonus/clean_exit_bonus.c		\
 			 checker_bonus/stack_bonus.c			\
 			 checker_bonus/stack_swap_bonus.c		\

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*   stack_operations_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:08:56 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/24 23:07:50 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:07:20 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_stack *s)
 	t_list	*third;
 
 	if (s->head == NULL || s->head->next == NULL)
-		Error() ;
+		checker_error();
 	tmp = s->head;
 	third = s->head->next->next;
 	s->head = s->head->next;

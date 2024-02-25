@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 19:12:52 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/24 23:34:42 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 23:52:29 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	stack_rrotate(t_stack *s)
 	t_list	*tmp;
 
 	if (s->head == NULL || s->head->next == NULL)
-		Error();
+		checker_error();
 	tmp = s->head;
 	while (tmp->next->next)
 		tmp = tmp->next;

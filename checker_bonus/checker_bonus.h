@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 00:46:30 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/24 03:15:17 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:33:09 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include "stdlib.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "stdlib.h"
 
 typedef struct s_stack{
 	t_list	*head;
@@ -25,16 +25,17 @@ typedef struct s_stack{
 	char	*name;
 }			t_stack;
 
-
 t_stack	*get_a(void);
 t_stack	*get_b(void);
+
+t_list	**get_ops(void);
 
 t_stack	*load_a(int argc, char **argv);
 
 void	clean_exit(const int i);
-void	Error(void);
-void	KO(void);
-void	OK(void);
+void	checker_error(void);
+void	ok(void);
+void	ko(void);
 
 void	print_stack(t_stack *a);
 void	stack_add_back(t_stack *a, int i);
@@ -45,18 +46,20 @@ void	sb(void);
 void	ss(void);
 
 void	push(t_stack *a, t_stack *b);
-void	pa();
-void	pb();
+void	pa(void);
+void	pb(void);
 
 void	stack_rotate(t_stack *s);
-void	rb();
-void	ra();
-void	rr();
+void	rb(void);
+void	ra(void);
+void	rr(void);
 
 void	stack_rrotate(t_stack *s);
-void	rrb();
-void	rra();
-void	rrr();
+void	rrb(void);
+void	rra(void);
+void	rrr(void);
 
+void	load_ops(void);
+void	execute_ops(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:43:05 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/24 23:34:42 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/02/24 23:52:29 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push(t_stack *a, t_stack *b)
 	t_list	*tmp;
 
 	if (b->head == NULL)
-		Error();
+		checker_error();
 	tmp = b->head;
 	b->head = b->head->next;
 	if (b->head == NULL)
