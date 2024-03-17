@@ -62,4 +62,7 @@ void	rrr(void);
 void	load_ops(void);
 void	execute_ops(void);
 
+char	***get_arr(void);
+char	**split_and_join(int argc, char **argv);
+
 #endif

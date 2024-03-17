@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_exit.c                                       :+:      :+:    :+:   */
+/*   checker_error_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 13:51:56 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/03/17 20:31:51 by mel-meka         ###   ########.fr       */
+/*   Created: 2024/03/17 21:43:45 by mel-meka          #+#    #+#             */
+/*   Updated: 2024/03/17 21:43:45 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-void	del_with_free(void *content)
+void	checker_error(void)
 {
-	free(content);
+	clean_exit(1);
 }
 
-void	free_arr(char **arr)
+void	ko(void)
 {
-	char	**tmp;
-
-	if (arr == NULL)
-		return ;
-	tmp = arr;
-	while (*tmp)
-	{
-		free(*tmp);
-		tmp++;
-	}
-	free(arr);
+	ft_printf("KO\n");
+	clean_exit(0);
 }
 
-void	clean_exit(const int i)
+void	ok(void)
 {
-	ft_lstclear(&get_a()->head, del_with_free);
-	ft_lstclear(&get_b()->head, del_with_free);
-	free_arr(*get_arr());
-	if (i)
-	{
-		ft_printf("Error\n");
-		exit(i);
-	}
-	exit(0);
+	ft_printf("OK\n");
+	clean_exit(0);
 }

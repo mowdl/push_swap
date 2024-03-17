@@ -6,7 +6,7 @@
 /*   By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:57:48 by mel-meka          #+#    #+#             */
-/*   Updated: 2024/02/25 02:56:38 by mel-meka         ###   ########.fr       */
+/*   Updated: 2024/03/17 21:11:43 by mel-meka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ int		min(int a, int b);
 t_move	i_of_cheapest_to_move(t_stack *a, t_stack *b);
 
 void	sort_big_stack(t_stack *a, t_stack *b);
+
+char	***get_arr(void);
+char	**split_and_join(int argc, char **argv);
 
 #endif // !PUSH_SWAP_H

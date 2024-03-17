@@ -6,7 +6,7 @@
 #    By: mel-meka <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:52:03 by mel-meka          #+#    #+#              #
-#    Updated: 2024/02/25 02:27:15 by mel-meka         ###   ########.fr        #
+#    Updated: 2024/03/17 20:37:09 by mel-meka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ PS_SRCS = push_swap.c			\
 		  sort_medium.c			\
 		  min_max.c				\
 		  cheapest_to_move.c	\
-		  sort_big_stack.c
+		  sort_big_stack.c		\
+		  split_and_join.c
 
 BONUS_SRSC = checker_bonus/checker_bonus.c			\
 			 checker_bonus/load_a_bonus.c			\
@@ -79,6 +80,8 @@ BONUS_SRSC = checker_bonus/checker_bonus.c			\
 			 checker_bonus/stack_push_bonus.c		\
 			 checker_bonus/stack_rotate_bonus.c		\
 			 checker_bonus/stack_rrotate_bonus.c	\
+			 checker_bonus/split_and_join_bonus.c	\
+			 checker_bonus/checker_error_bonus.c
 	
 FT_PRINTF_OBJS = $(FT_PRINTF_SRCS:.c=.o)
 GNL_OBJS = $(GNL_SRCS:.c=.o)

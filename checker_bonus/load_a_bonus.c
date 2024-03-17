@@ -81,21 +81,19 @@ void	load_with_split(t_stack *a, char *arg)
 t_stack	*load_a(int argc, char **argv)
 {
 	t_stack	*a;
-	int		i;
+	char	**arr;
 
 	a = get_a();
 	if (argc < 2)
 		clean_exit(1);
-	if (argc == 2)
+	*get_arr() = split_and_join(argc, argv);
+	arr = *get_arr();
+	if (arr == NULL)
+		clean_exit(1);
+	while (*arr != NULL)
 	{
-		load_with_split(a, argv[1]);
-		return (a);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		stack_add_back(a, stack_atoi(argv[i]));
-		i++;
+		stack_add_back(a, stack_atoi(*arr));
+		arr++;
 	}
 	return (a);
 }

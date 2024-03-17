@@ -17,32 +17,30 @@ void	del_with_free(void *content)
 	free(content);
 }
 
+void	free_arr(char **arr)
+{
+	char	**tmp;
+
+	if (arr == NULL)
+		return ;
+	tmp = arr;
+	while (*tmp)
+	{
+		free(*tmp);
+		tmp++;
+	}
+	free(arr);
+}
+
 void	clean_exit(const int i)
 {
 	ft_lstclear(&get_a()->head, del_with_free);
 	ft_lstclear(&get_b()->head, del_with_free);
-	ft_lstclear(get_ops(), del_with_free);
+	free_arr(*get_arr());
 	if (i)
 	{
-		write(2, "Error\n", 6);
+		ft_printf("Error\n");
 		exit(i);
 	}
 	exit(0);
-}
-
-void	checker_error(void)
-{
-	clean_exit(1);
-}
-
-void	ko(void)
-{
-	ft_printf("KO\n");
-	clean_exit(0);
-}
-
-void	ok(void)
-{
-	ft_printf("OK\n");
-	clean_exit(0);
 }
