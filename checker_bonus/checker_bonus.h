@@ -18,7 +18,8 @@
 # include "get_next_line.h"
 # include "stdlib.h"
 
-typedef struct s_stack{
+typedef struct s_stack
+{
 	t_list	*head;
 	t_list	*tail;
 	int		size;
