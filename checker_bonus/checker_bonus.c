@@ -53,6 +53,8 @@ int	is_stack_sorted(t_stack *a)
 
 int	main(int argc, char **argv)
 {
+	if (argc == 1)
+		return (0);
 	load_a(argc, argv);
 	load_ops();
 	execute_ops();
