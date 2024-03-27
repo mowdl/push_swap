@@ -69,7 +69,8 @@ PS_SRCS = push_swap.c			\
 		  min_max.c				\
 		  cheapest_to_move.c	\
 		  sort_big_stack.c		\
-		  split_and_join.c
+		  split_and_join.c		\
+		  sort_in_a.c
 
 BONUS_SRSC = checker_bonus/checker_bonus.c			\
 			 checker_bonus/load_a_bonus.c			\
@@ -91,7 +92,7 @@ BONUS_OBJS = $(BONUS_SRSC:.c=.o)
 SRCS = $(GNL_SRCS) $(LIBFT_SRCS) $(FT_PRINTF_SRCS)
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I libft -I minilibX_macos -I get_next_line -I ft_printf
+INCLUDES = -I libft -I get_next_line -I ft_printf
 
 
 NAME = push_swap

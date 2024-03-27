@@ -12,20 +12,6 @@
 
 #include "push_swap.h"
 
-static char	**free_arr(char **arr)
-{
-	size_t	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (NULL);
-}
-
 void	stack_atoi_loop(const char **str, int *digits, long *r)
 {
 	while (**str && ft_isdigit(**str))
@@ -50,6 +36,8 @@ int	stack_atoi(const char *str)
 		if (*str == '-')
 			s = -1;
 		str++;
+		if (*str == '\0')
+			clean_exit(1);
 	}
 	digits = 0;
 	r = 0;
@@ -59,23 +47,6 @@ int	stack_atoi(const char *str)
 		|| digits > 10 || r > (long)2147483647 || r < (long)-2147483648)
 		clean_exit(1);
 	return (r);
-}
-
-void	load_with_split(t_stack *a, char *arg)
-{
-	int		i;
-	char	**args;
-
-	i = 0;
-	args = ft_split(arg, ' ');
-	if (args == NULL)
-		clean_exit(1);
-	while (args[i])
-	{
-		stack_add_back(a, stack_atoi(args[i]));
-		i++;
-	}
-	free_arr(args);
 }
 
 t_stack	*load_a(int argc, char **argv)
@@ -95,5 +66,7 @@ t_stack	*load_a(int argc, char **argv)
 		stack_add_back(a, stack_atoi(*arr));
 		arr++;
 	}
+	free_arr(*get_arr());
+	*get_arr() = NULL;
 	return (a);
 }

@@ -18,7 +18,7 @@ void	sort_in_b(t_stack *a, t_stack *b)
 
 	a->size = ft_lstsize(a->head);
 	b->size = ft_lstsize(b->head);
-	while (a->size)
+	while (a->size > 4)
 	{
 		move = i_of_cheapest_to_move(a, b);
 		exe_move(move);
@@ -70,30 +70,15 @@ void	smallest_to_top(t_stack *a)
 	}
 }
 
-void	push_b_to_a(t_stack *b)
-{
-	int		i;
-	t_list	*tmp;
-
-	tmp = b->head;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	while (i)
-	{
-		pa();
-		i--;
-	}
-}
-
 void	sort_big_stack(t_stack *a, t_stack *b)
 {
 	pb();
 	pb();
 	sort_in_b(a, b);
-	push_b_to_a(b);
+	if (a->size == 3)
+		sort_3_stack(a);
+	else
+		sort_4_stack(a);
+	sort_in_a(a, b);
 	smallest_to_top(a);
 }

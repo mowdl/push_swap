@@ -60,8 +60,6 @@ int	main(int argc, char **argv)
 		sort_3_stack(a);
 	else if (a->size == 4)
 		sort_4_stack(a);
-	else if (a->size == 5)
-		sort_5_stack(a);
 	else
 		sort_big_stack(a, b);
 	clean_exit(0);

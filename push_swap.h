@@ -83,5 +83,8 @@ void	sort_big_stack(t_stack *a, t_stack *b);
 
 char	***get_arr(void);
 char	**split_and_join(int argc, char **argv);
+void	free_arr(char **arr);
+
+void	sort_in_a(t_stack *a, t_stack *b);
 
 #endif // !PUSH_SWAP_H

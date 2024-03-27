@@ -26,13 +26,27 @@ char	*strjoin_space(char *str, char *str2)
 	return (tmp);
 }
 
+void	check_for_empty_argv(char **argv)
+{
+	char	**tmp;
+
+	tmp = argv + 1;
+	while (*tmp)
+	{
+		if (**tmp == '\0')
+			clean_exit(1);
+		tmp++;
+	}
+}
+
 char	**split_and_join(int argc, char **argv)
 {
-	static char	**arr;
-	char		*str;
-	char		*tmp;
-	int			i;
+	char	**arr;
+	char	*str;
+	char	*tmp;
+	int		i;
 
+	check_for_empty_argv(argv);
 	tmp = ft_strdup(argv[1]);
 	if (tmp == NULL)
 		return (NULL);

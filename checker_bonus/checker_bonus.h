@@ -65,4 +65,6 @@ void	execute_ops(void);
 char	***get_arr(void);
 char	**split_and_join(int argc, char **argv);
 
+void	free_arr(char **arr);
+
 #endif

@@ -39,8 +39,8 @@ void	clean_exit(const int i)
 	free_arr(*get_arr());
 	if (i)
 	{
-		ft_printf("Error\n");
-		exit(i);
+		if (write(2, "Error\n", 6))
+			exit(i);
 	}
 	exit(0);
 }
