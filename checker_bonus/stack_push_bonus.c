@@ -17,7 +17,7 @@ void	push(t_stack *a, t_stack *b)
 	t_list	*tmp;
 
 	if (b->head == NULL)
-		checker_error();
+		return ;
 	tmp = b->head;
 	b->head = b->head->next;
 	if (b->head == NULL)

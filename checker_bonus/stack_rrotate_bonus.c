@@ -17,7 +17,7 @@ void	stack_rrotate(t_stack *s)
 	t_list	*tmp;
 
 	if (s->head == NULL || s->head->next == NULL)
-		checker_error();
+		return ;
 	tmp = s->head;
 	while (tmp->next->next)
 		tmp = tmp->next;

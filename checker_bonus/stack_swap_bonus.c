@@ -18,7 +18,7 @@ void	swap(t_stack *s)
 	t_list	*third;
 
 	if (s->head == NULL || s->head->next == NULL)
-		checker_error();
+		return ;
 	tmp = s->head;
 	third = s->head->next->next;
 	s->head = s->head->next;

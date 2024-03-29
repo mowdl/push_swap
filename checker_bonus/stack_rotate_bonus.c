@@ -17,7 +17,7 @@ void	stack_rotate(t_stack *s)
 	t_list	*tmp;
 
 	if (s->head == NULL || s->head->next == NULL)
-		checker_error();
+		return ;
 	tmp = s->head;
 	s->head = s->head->next;
 	s->tail->next = tmp;
