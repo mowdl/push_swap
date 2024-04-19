@@ -12,23 +12,10 @@
 
 #include "push_swap.h"
 
-void	stack_atoi_loop(const char **str, int *digits, long *r)
-{
-	while (**str && ft_isdigit(**str))
-	{
-		(*digits)++;
-		if (*digits > 10)
-			break ;
-		*r = *r * 10 + (**str - '0');
-		(*str)++;
-	}
-}
-
 int	stack_atoi(const char *str)
 {
 	long	r;
 	int		s;
-	int		digits;
 
 	s = 1;
 	if (*str == '-' || *str == '+')
@@ -39,12 +26,16 @@ int	stack_atoi(const char *str)
 		if (*str == '\0')
 			clean_exit(1);
 	}
-	digits = 0;
 	r = 0;
-	stack_atoi_loop(&str, &digits, &r);
+	while (*str && ft_isdigit(*str))
+	{
+		r = r * 10 + (*str - '0');
+		if ((r * s) > 2147483647 || (r * s < -2147483648))
+			clean_exit(1);
+		str++;
+	}
 	r = r * s;
-	if ((*str != '\0' && !ft_isdigit(*str))
-		|| digits > 10 || r > (long)2147483647 || r < (long)-2147483648)
+	if (*str != '\0' && !ft_isdigit(*str))
 		clean_exit(1);
 	return (r);
 }
