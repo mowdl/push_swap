@@ -46,6 +46,7 @@ void	check_line(char *line)
 		return ;
 	else if (!ft_strcmp(line, "rrr\n"))
 		return ;
+	free(line);
 	checker_error();
 }
 

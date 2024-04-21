@@ -36,6 +36,7 @@ void	clean_exit(const int i)
 {
 	ft_lstclear(&get_a()->head, del_with_free);
 	ft_lstclear(&get_b()->head, del_with_free);
+	ft_lstclear(get_ops(), del_with_free);
 	free_arr(*get_arr());
 	if (i)
 	{
